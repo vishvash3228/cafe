@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign Up - Python Cafe</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #f8e9d2, #c39b6d);
+      font-family: 'Roboto', sans-serif;
+      color: #5a3e1b;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .signup-container {
+      background: #fff8f0;
+      padding: 40px 50px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(195, 155, 109, 0.4);
+      width: 320px;
+      text-align: center;
+      position: relative;
+    }
+
+    h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.8rem;
+      margin-bottom: 25px;
+      color: #a65a11;
+      text-shadow: 1px 1px 3px #d9b382;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    label {
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: #7f5a1e;
+      text-align: left;
+      font-size: 1.05rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      padding: 12px 15px;
+      border: 2px solid #d9b382;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      border-color: #a65a11;
+      outline: none;
+      box-shadow: 0 0 8px #d9b382;
+    }
+
+    button {
+      padding: 12px;
+      background: #a65a11;
+      color: #fff8f0;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 5px 10px rgba(166, 90, 17, 0.5);
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background: #d9b382;
+      color: #5a3e1b;
+      box-shadow: 0 6px 15px rgba(217, 179, 130, 0.7);
+    }
+
+    /* Messages styling */
+    .messages {
+      margin-bottom: 20px;
+      color: #b83a08;
+      font-weight: 700;
+      text-shadow: 0 1px 1px #f8e9d2;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <h2>Sign Up</h2>
+
+    {% if messages %}
+      <div class="messages">
+        {% for message in messages %}
+          <p>{{ message }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Register</button>
+    </form>
+  </div>
+</body>
+</html>
